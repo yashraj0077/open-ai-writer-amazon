@@ -9,7 +9,21 @@ class Navigation extends Component {
         return (
             <div>
                 <Navbar bg='dark' variant="dark" sticky="top" expand='md' collapseOnSelect>
-                <Navbar.Brand
+                <Navbar.Brand href='/'>
+                    <img src= {logo} width='50px' alt='logo' />
+                    Asia's AI Bloggers
+                </Navbar.Brand>
+
+                <Navbar.Toggle />
+                <Navbar.Collapse>
+                    <Nav>
+                        <Nav.Link href='blog-titles'>Blog Titles</Nav.Link>
+                        <Nav.Link href='product-descriptions'>Product Descriptions</Nav.Link>
+                        <Nav.Link href='cold-emails'>Cold Emails</Nav.Link>
+                    </Nav>
+
+
+                </Navbar.Collapse>
 
 
 
@@ -19,3 +33,5 @@ class Navigation extends Component {
         )
     }
 }
+
+export default Navigation
