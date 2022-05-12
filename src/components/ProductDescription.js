@@ -16,12 +16,13 @@ class ProductDescription extends Component {
     
     onFormSubmit = e => {
         e.preventDefault()
+        console.log(process.env.REACT_APP_OPENAI_API_KEY)
 
         const formData = new FormData(e.target),
         formDataObj = Object.fromEntries(formData.entries())
 
         const configuration = new Configuration({
-            apiKey:'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',
+            apiKey: process.env.REACT_APP_OPENAI_API_KEY,
           });
           const openai = new OpenAIApi(configuration);
 
