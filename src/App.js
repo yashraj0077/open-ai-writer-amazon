@@ -4,7 +4,7 @@ import ColdEmail from './components/ColdEmail';
 import Navigation from './components/Navigation';
 import ProductDescription from './components/ProductDescription';
 import Home from './components/Home'
-
+import './App.css'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 

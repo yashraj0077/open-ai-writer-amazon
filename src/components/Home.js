@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from  'react';
 import Display from './Display';
 import {Container, Row, Col, Carousel} from 'react-bootstrap';
-import mainImage from '../main-image.jpg'
+import '../App.css'
 
 
 class Home extends Component {
@@ -10,13 +10,7 @@ class Home extends Component {
         return (
             <div>
                 <br/>
-                <Container>
-                    <Carousel>
-                        <Carousel.Item>
-                            <img className="d-block w-100" src={mainImage} alt='Muliple people typing on keyboards'  />
-                        </Carousel.Item>
-                    </Carousel>
-                    <br />
+                 <Container>
                     <br />
                     <h1>AI Writing Assistant</h1>
                     <p>Enter the future and let AI join your team. Choose your engine below </p>
@@ -46,7 +40,8 @@ class Home extends Component {
                         </Col>
 
                     </Row>
-                </Container>
+                    </Container>
+                    <br />
             </div>
         )
     }
