@@ -1,22 +1,29 @@
 
 import React from "react";
 import { Component } from  'react';
-import {Container, Form, Button, Card} from 'react-bootstrap';
+import {Container, Form, Button, Spinner,  Card} from 'react-bootstrap';
 const { Configuration, OpenAIApi } = require('openai');
 
 
+ 
 class ProductDescription extends Component {
     constructor () {
         super ()
         this.state = {
             heading: 'See the AI response below',
-            response: '(be patient! response may take up to 20 seconds to load)'
+            response: '(be patient! response may take up to 20 seconds to load)',
+            loading:false
         }
     }
+
+    toggleLoader = () => {
+    
+          this.setState({ loading: true });
+        } 
     
     onFormSubmit = e => {
         e.preventDefault()
-        console.log(process.env.REACT_APP_OPENAI_API_KEY)
+        
 
         const formData = new FormData(e.target),
         formDataObj = Object.fromEntries(formData.entries())
@@ -37,7 +44,8 @@ class ProductDescription extends Component {
         .then((response) => {
             this.setState({
                 heading: `AI Product Descriptions for: ${formDataObj.productname}` ,
-                response: `${response.data.choices[0].text}`
+                response: `${response.data.choices[0].text}`,
+                loading: false
             })
         })
     }
@@ -50,7 +58,7 @@ class ProductDescription extends Component {
                     <br />
                     <h1>Generate Free Product Descriptions</h1>
                     <br />
-                    <h4>Generare a unique product description for any product in the world! Simply enter the product name and a few details</h4>
+                    <h4>Generate a unique product description for any product in the world! Simply enter the product name and a few details</h4>
                     <br />
                     <br />
                     <Form onSubmit={this.onFormSubmit}>
@@ -65,9 +73,22 @@ class ProductDescription extends Component {
                             </Form.Text>
                         </Form.Group>
 
-                        <Button variant='primary' size='lg' type='submit'>
-                            Get AI Descriptions
-                        </Button>
+                        {this.state.loading ? (
+            <Spinner
+              style={{ marginBottom: 27 }}
+              animation="border"
+              variant="danger"
+            />
+          ) : null}
+
+          <Button
+            onClick={() => this.toggleLoader()}
+            variant={"primary"}
+            size="lg"
+            type='submit'
+          >
+            {this.state.loading ? "Loading" : "Get AI Description"}
+          </Button>
                     </Form>
                     <br />
                     <br />
