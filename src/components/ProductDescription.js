@@ -29,7 +29,7 @@ class ProductDescription extends Component {
         formDataObj = Object.fromEntries(formData.entries())
 
         const configuration = new Configuration({
-            apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+            apiKey: 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,
           });
           const openai = new OpenAIApi(configuration);
 
